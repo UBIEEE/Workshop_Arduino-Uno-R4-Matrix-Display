@@ -1,24 +1,34 @@
 #include <Arduino.h>
+#include <Arduino_LED_Matrix.h>
 
-// put function declarations here:
-constexpr unsigned long convert_seconds_to_milliseconds(const unsigned long seconds);
+#define MAX_ROW 8
+#define MAX_COL 12
 
+ArduinoLEDMatrix matrix; // Create an instance of the ArduinoLEDMatrix class
+byte frame[8][12] = {
+  { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+  { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+  { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+  { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+  { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+  { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+  { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+  { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
+};
 
 void setup() {
-  // put your setup code here, to run once:
+  // Initialize the LED matrix
+  matrix.begin();
+  matrix.renderBitmap(frame, MAX_ROW, MAX_COL);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-  const unsigned long one_second = convert_seconds_to_milliseconds(1);
-  digitalWrite(LED_BUILTIN, HIGH);
-  delay(one_second);
-  digitalWrite(LED_BUILTIN, LOW);
-  delay(one_second);
-}
-
-
-// put function definitions here:
-constexpr unsigned long convert_seconds_to_milliseconds(const unsigned long seconds){
-  return seconds * 1000;
+  const unsigned long delay_in_ms = 100;
+  for (int i = 0; i < MAX_ROW; i++) {
+    for (int j = 0; j < MAX_COL; j++) {
+      frame[i][j] = ~frame[i][j];
+      matrix.renderBitmap(frame, MAX_ROW, MAX_COL);
+      delay(delay_in_ms);
+    }
+  }
 }
