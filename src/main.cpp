@@ -1,36 +1,24 @@
 #include <Arduino.h>
+#include <ArduinoGraphics.h>
 #include <Arduino_LED_Matrix.h>
-#include "four_frames.h"
 
 ArduinoLEDMatrix matrix; // Create an instance of the ArduinoLEDMatrix class
 
-const uint32_t happy_frame[3] = {
-    0x19819,
-    0x80000001,
-    0x81f8000
-};
-
-// 0b110001100001001010010001000100
-// 0b1000010000010000001000100000000
-// 0b10100000000001000000000000000000
-const unsigned long heart_frame[3] = {
-  0x3184a444,
-  0x42081100,
-  0xa0040000};
-
-
+#define ARDUINO_GRAPHICS_DEFAULT_COLOR 0xFFFFFF // Default for Graphics Library to Write as On
 
 void setup() {
   matrix.begin();
-  matrix.loadWrapper(four_frames, 4);
-  matrix.play(false);
-  delay(2000);
 }
 
 void loop() {
-  matrix.loadFrame(happy_frame);
-  delay(500);
-
-  matrix.loadFrame(heart_frame);
-  delay(500);
+  char message[] = " The current time is 00:00:00 ";
+  int one_hundred_ms = 100;
+  matrix.beginDraw();
+  matrix.stroke(ARDUINO_GRAPHICS_DEFAULT_COLOR);
+  matrix.textScrollSpeed(one_hundred_ms);
+  matrix.textFont(Font_5x7);
+  matrix.beginText(0, 1, ARDUINO_GRAPHICS_DEFAULT_COLOR);
+  matrix.println(message);
+  matrix.endText(SCROLL_LEFT);
+  matrix.endDraw();
 }
