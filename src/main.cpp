@@ -1,22 +1,24 @@
 #include <Arduino.h>
 
 // put function declarations here:
-int myFunction(int, int);
+constexpr unsigned long convert_seconds_to_milliseconds(const unsigned long seconds);
+
 
 void setup() {
   // put your setup code here, to run once:
-  int result = myFunction(2, 3);
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
+  const unsigned long one_second = convert_seconds_to_milliseconds(1);
   digitalWrite(LED_BUILTIN, HIGH);
-  delay(1000);
+  delay(one_second);
   digitalWrite(LED_BUILTIN, LOW);
-  delay(1000);
+  delay(one_second);
 }
 
+
 // put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+constexpr unsigned long convert_seconds_to_milliseconds(const unsigned long seconds){
+  return seconds * 1000;
 }
