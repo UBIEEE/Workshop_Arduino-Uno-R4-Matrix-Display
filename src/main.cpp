@@ -1,5 +1,6 @@
 #include <Arduino.h>
 #include <Arduino_LED_Matrix.h>
+#include "four_frames.h"
 
 ArduinoLEDMatrix matrix; // Create an instance of the ArduinoLEDMatrix class
 
@@ -21,6 +22,9 @@ const unsigned long heart_frame[3] = {
 
 void setup() {
   matrix.begin();
+  matrix.loadWrapper(four_frames, 4);
+  matrix.play(false);
+  delay(2000);
 }
 
 void loop() {
