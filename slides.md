@@ -2,23 +2,21 @@
 marp: true
 theme: default
 class:
-- invert
+  - invert
 ---
 
 # Programming the Arduino Uno R4 Matrix Display
 
-UB IEEE x DREAM 
+UB IEEE x DREAM
 
-<!-- Please join our Discord:
-![bg right w:400](images/qrcode_discord_ieee.png) -->
+Please join our Discord:
+![bg right w:400](images/qrcode_discord_ieee.png)
 
 ---
 
-
 ## Installing VSCode
 
-
-Visual Studio Code is a powerful text editor. VS Code's powerful and popular extension ecosystem can give it many of the powers of a fully-fledged IDE. You can download Visual Studio Code from here: https://code.visualstudio.com/download. 
+Visual Studio Code is a powerful text editor. VS Code's powerful and popular extension ecosystem can give it many of the powers of a fully-fledged IDE. You can download Visual Studio Code from here: https://code.visualstudio.com/download.
 
 ![bg right:30% w:300](./images/code-stable.png)
 
@@ -27,13 +25,9 @@ Visual Studio Code is a powerful text editor. VS Code's powerful and popular ext
 ## Installing PlatformIO
 
 Install PlatformIO as a VSCode extension:
-![top:40% w:400](./images/installing-platformio.png)
-
-- Also remember to upgrade PIO
+![top:40% w:500](./images/installing-platformio.png)
 
 --
-
-
 
 ## Comparison of Arduino IDE vs. VSCode + PlatformIO
 
@@ -49,8 +43,6 @@ Install PlatformIO as a VSCode extension:
 
 ## Differences Between Arduino IDE's `.ino` and Using Arduino Framework Directly
 
-
-
 ---
 
 ## Arduino Software Convention
@@ -59,8 +51,8 @@ Install PlatformIO as a VSCode extension:
 - Arduino is really just C++
 - PlatformIO is how it really is
 
-
 Arduino main:
+
 ```cpp
 int main(void){
     init();
@@ -87,7 +79,7 @@ framework = arduino
 
 ## Updating Dependencies
 
-![](images/updating-dependencies.png)
+![w:900](images/updating-dependencies.png)
 
 ---
 
@@ -149,7 +141,6 @@ constexpr unsigned long convert_seconds_to_milliseconds(const unsigned long seco
 }
 ```
 
-
 ---
 
 ## Using the Integrated Matrix on the Uno R4 Wifi
@@ -205,12 +196,11 @@ void loop() {
 
 - Matrix is 12x8 == 96 pixels
 - `unsigned long` is 32 bits
-- represent matrix as an array of 3 unsigned long
+- represent matrix as an array of 3 `unsigned long`
 
 ---
 
 ### Using Hexadecimal Format to Save Memory Space Continued
-
 
 ```cpp
 #include <Arduino.h>
@@ -251,7 +241,9 @@ void loop() {
 
 ## Create An Animation
 
-![op:40% w:400](images/animation-code.png)
+Head over to: https://ledmatrix-editor.arduino.cc/
+
+![bg right w:500](images/qrcode_ledmatrix-editor.arduino.cc.png)
 
 ---
 
@@ -328,18 +320,17 @@ void loop() {
 
 ```
 
+---
 
---- 
+### Installing Libraries Using PlatformIO
 
-### Installing Libraries Using PlatformIO 
-
-![](images/libraries-1.png)
+![w:1000](images/libraries-1.png)
 
 ---
 
 #### Installing Libraries Using PlatformIO
 
-![](images/libraries-2.png)
+![w:1000](images/libraries-2.png)
 
 ---
 
@@ -389,25 +380,14 @@ void loop() {
     matrix.endDraw();
 }
 ```
+
 ---
-
-
 
 ## Additional <!-- Learning --> Resources
 
 - VSCode Documentation: https://code.visualstudio.com/Docs
-- PlatformIO's Documentation: https://docs.platformio.org/en/latest/ 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- PlatformIO's Documentation: https://docs.platformio.org/en/latest/
+- Arduino Documentation: https://docs.arduino.cc/
+- C++ Programming Language: https://www.learncpp.com/
+- The C Programming Language by Brian Kernighan and Dennis Ritchie: https://en.wikipedia.org/wiki/The_C_Programming_Language
+- Purchase the Arduino Uno R4 Wifi (US Store): https://store-usa.arduino.cc/products/uno-r4-wifi
